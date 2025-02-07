@@ -547,6 +547,7 @@ ENTRYPOINT ["dotnet", "Shorten.dll"]
 az webapp deployment list-publishing-profiles --name upt-awa-XXX --resource-group upt-arg-XXX --xml
 ```
 > Donde XXX; es el numero de identicación de la Aplicación Web creada en la primera sección
+![image](https://github.com/user-attachments/assets/4bafa9e5-360e-43ca-a6ad-a1df0dae5c4e)
 
 2. Abrir un navegador de internet y dirigirse a su repositorio en Github, en la sección *Settings*, buscar la opción *Secrets and Variables* y seleccionar la opción *Actions*. Dentro de esta hacer click en el botón *New Repository Secret*. En el navegador, dentro de la ventana *New Secret*, colocar como nombre AZURE_WEBAPP_PUBLISH_PROFILE y como valor el obtenido en el paso anterior.
  
