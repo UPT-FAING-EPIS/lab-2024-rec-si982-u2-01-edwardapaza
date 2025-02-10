@@ -11,7 +11,7 @@ RUN dotnet publish -c Release -o out
 
 # Utilizar la imagen base de .NET Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS runtime
-LABEL org.opencontainers.image.source="https://github.com/p-cuadros/Shorten02"
+LABEL org.opencontainers.image.source="https://github.com/edwardapaza/shorten"
 
 # Establecer el directorio de trabajo
 WORKDIR /app
