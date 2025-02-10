@@ -127,6 +127,7 @@ resource "azurerm_mssql_database" "sqldb" {
   sku_name = "Free"
 }
 ```
+![image](https://github.com/user-attachments/assets/988083eb-29b8-464e-a62a-732e46c6b4df)
 
 3. Abrir un navegador de internet y dirigirse a su repositorio en Github, en la sección *Settings*, buscar la opción *Secrets and Variables* y seleccionar la opción *Actions*. Dentro de esta crear los siguientes secretos
 > AZURE_USERNAME: Correo o usuario de cuenta de Azure
@@ -134,6 +135,8 @@ resource "azurerm_mssql_database" "sqldb" {
 > SUSCRIPTION_ID: ID de la Suscripción de cuenta de Azure
 > SQL_USER: Usuario administrador de la base de datos, ejm: adminsql
 > SQL_PASS: Password del usuario administrador de la base de datos, ejm: upt.2025
+
+![image](https://github.com/user-attachments/assets/efe2f029-63c4-437a-b339-89a6bd4f475f)
 
 5. En el Visual Studio Code, crear la carpeta .github/workflows en la raiz del proyecto, seguidamente crear el archivo deploy.yml con el siguiente contenido
 <details><summary>Click to expand: deploy.yml</summary>
@@ -321,6 +324,7 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version=8.
 dotnet add package Microsoft.AspNetCore.Components.QuickGrid --version=8.0.0
 dotnet add package Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter --version=8.0.0
 ```
+![image](https://github.com/user-attachments/assets/1db473c4-3131-4e94-921c-6a366f46fb6a)
 
 2. En el terminal, ejecutar el siguiente comando para crear los modelos de autenticación de identidad dentro de la aplicación.
 ```Bash
@@ -366,7 +370,8 @@ public class UrlMapping
     public string ShortenedUrl { get; set; } = string.Empty;
 }
 ```
-  
+![image](https://github.com/user-attachments/assets/938fca99-595d-4de7-9c2f-997655d986d6)
+
 6. En el Visual Studio Code, en la carpeta src/Areas/Domain, crear el archivo ShortenContext.cs con el siguiente contenido:
 ```CSharp
 using Microsoft.EntityFrameworkCore;
@@ -396,6 +401,7 @@ public class ShortenContext : DbContext
     public DbSet<UrlMapping> UrlMappings { get; set; }
 }
 ```
+![image](https://github.com/user-attachments/assets/117191aa-4f52-4aed-a325-b986ebb45f70)
 
 7. En el Visual Studio Code, en la carpeta src, modificar el archivo Program.cs con el siguiente contenido al inicio:
 ```CSharp
@@ -437,6 +443,7 @@ app.MapRazorPages();
 
 app.Run();
 ```
+![image](https://github.com/user-attachments/assets/4000979c-7755-4565-88aa-853cfc90a290)
 
 8. En el terminal, ejecutar los siguientes comandos para realizar la migración de la entidad UrlMapping
 ```Powershell
@@ -452,6 +459,7 @@ dotnet aspnet-codegenerator razorpage Edit Edit -m UrlMapping -dc ShortenContext
 dotnet aspnet-codegenerator razorpage Delete Delete -m UrlMapping -dc ShortenContext -outDir Pages/UrlMapping -udl
 dotnet aspnet-codegenerator razorpage Details Details -m UrlMapping -dc ShortenContext -outDir Pages/UrlMapping -udl
 ```
+![image](https://github.com/user-attachments/assets/066d46f8-5b3e-4c21-b6f6-ae57ef388565)
 
 10. En el Visual Studio Code, en la carpeta src, modificar el archivo _Layout.cshtml, Adicionando la siguiente opciòn dentro del navegador:
 ```CSharp
@@ -539,6 +547,7 @@ COPY --from=build /app/out .
 # Definir el comando de entrada para ejecutar la aplicación
 ENTRYPOINT ["dotnet", "Shorten.dll"]
 ``` 
+![image](https://github.com/user-attachments/assets/9ac2f5d0-fdc1-426c-b97a-0eca8a4ff535)
 
 ### DESPLIEGUE DE LA APLICACION 
 
@@ -609,11 +618,243 @@ jobs:
    
 5. En el Navegador de internet, dirigirse al repositorio de Github y revisar la seccion Actions, verificar que se esta ejecutando correctamente el Workflow.
 
+![image](https://github.com/user-attachments/assets/32524d42-09cf-4595-9733-413c8f8a02b1)
+
 6. En el Navegador de internet, una vez finalizada la automatización, ingresar al sitio creado y navegar por el (https://upt-awa-XXX.azurewebsites.net).
+![image](https://github.com/user-attachments/assets/878dc47f-bdc3-44f7-a151-1e0193edae57)
 
 7. En el Terminal, revisar las metricas de navegacion con el siguiente comando.
 ```Powershell
 az monitor metrics list --resource "/subscriptions/XXXXXXXXXXXXXXX/resourceGroups/upt-arg-XXX/providers/Microsoft.Web/sites/upt-awa-XXXX" --metric "Requests" --start-time 2025-01-07T18:00:00Z --end-time 2025-01-07T23:00:00Z --output table
+```
+```
+tput table;78ff1589-ef80-4c29-8a4b-ca5cfbd8dde9Timestamp             Name      Total
+--------------------  --------  -------
+2025-02-10T18:00:00Z  Requests  0.0
+2025-02-10T18:01:00Z  Requests  0.0
+2025-02-10T18:02:00Z  Requests  0.0
+2025-02-10T18:03:00Z  Requests  0.0
+2025-02-10T18:04:00Z  Requests  0.0
+2025-02-10T18:05:00Z  Requests  0.0
+2025-02-10T18:06:00Z  Requests  0.0
+2025-02-10T18:07:00Z  Requests  0.0
+2025-02-10T18:08:00Z  Requests  0.0
+2025-02-10T18:09:00Z  Requests  0.0
+2025-02-10T18:10:00Z  Requests  0.0
+2025-02-10T18:11:00Z  Requests  0.0
+2025-02-10T18:12:00Z  Requests  0.0
+2025-02-10T18:13:00Z  Requests  0.0
+2025-02-10T18:14:00Z  Requests  0.0
+2025-02-10T18:15:00Z  Requests  0.0
+2025-02-10T18:16:00Z  Requests  0.0
+2025-02-10T18:17:00Z  Requests  0.0
+2025-02-10T18:18:00Z  Requests  0.0
+2025-02-10T18:19:00Z  Requests  0.0
+2025-02-10T18:20:00Z  Requests  0.0
+2025-02-10T18:21:00Z  Requests  0.0
+2025-02-10T18:22:00Z  Requests  0.0
+2025-02-10T18:23:00Z  Requests  0.0
+2025-02-10T18:24:00Z  Requests  0.0
+2025-02-10T18:25:00Z  Requests  0.0
+2025-02-10T18:26:00Z  Requests  0.0
+2025-02-10T18:27:00Z  Requests  0.0
+2025-02-10T18:28:00Z  Requests  0.0
+2025-02-10T18:29:00Z  Requests  0.0
+2025-02-10T18:30:00Z  Requests  0.0
+2025-02-10T18:31:00Z  Requests  0.0
+2025-02-10T18:32:00Z  Requests  0.0
+2025-02-10T18:33:00Z  Requests  0.0
+2025-02-10T18:34:00Z  Requests  0.0
+2025-02-10T18:35:00Z  Requests  0.0
+2025-02-10T18:36:00Z  Requests  0.0
+2025-02-10T18:37:00Z  Requests  0.0
+2025-02-10T18:38:00Z  Requests  0.0
+2025-02-10T18:39:00Z  Requests  0.0
+2025-02-10T18:40:00Z  Requests  0.0
+2025-02-10T18:41:00Z  Requests  0.0
+2025-02-10T18:42:00Z  Requests  0.0
+2025-02-10T18:43:00Z  Requests  0.0
+2025-02-10T18:44:00Z  Requests  0.0
+2025-02-10T18:45:00Z  Requests  0.0
+2025-02-10T18:46:00Z  Requests  0.0
+2025-02-10T18:47:00Z  Requests  0.0
+2025-02-10T18:48:00Z  Requests  0.0
+2025-02-10T18:49:00Z  Requests  0.0
+2025-02-10T18:50:00Z  Requests  0.0
+2025-02-10T18:51:00Z  Requests  0.0
+2025-02-10T18:52:00Z  Requests  0.0
+2025-02-10T18:53:00Z  Requests  0.0
+2025-02-10T18:54:00Z  Requests  0.0
+2025-02-10T18:55:00Z  Requests  0.0
+2025-02-10T18:56:00Z  Requests  0.0
+2025-02-10T18:57:00Z  Requests  0.0
+2025-02-10T18:58:00Z  Requests  0.0
+2025-02-10T18:59:00Z  Requests  0.0
+2025-02-10T19:00:00Z  Requests  0.0
+2025-02-10T19:01:00Z  Requests  0.0
+2025-02-10T19:02:00Z  Requests  0.0
+2025-02-10T19:03:00Z  Requests  0.0
+2025-02-10T19:04:00Z  Requests  0.0
+2025-02-10T19:05:00Z  Requests  0.0
+2025-02-10T19:06:00Z  Requests  0.0
+2025-02-10T19:07:00Z  Requests  0.0
+2025-02-10T19:08:00Z  Requests  0.0
+2025-02-10T19:09:00Z  Requests  0.0
+2025-02-10T19:10:00Z  Requests  0.0
+2025-02-10T19:11:00Z  Requests  0.0
+2025-02-10T19:12:00Z  Requests  0.0
+2025-02-10T19:13:00Z  Requests  0.0
+2025-02-10T19:14:00Z  Requests  0.0
+2025-02-10T19:15:00Z  Requests  0.0
+2025-02-10T19:16:00Z  Requests  0.0
+2025-02-10T19:17:00Z  Requests  0.0
+2025-02-10T19:18:00Z  Requests  0.0
+2025-02-10T19:19:00Z  Requests  0.0
+2025-02-10T19:20:00Z  Requests  0.0
+2025-02-10T19:21:00Z  Requests  0.0
+2025-02-10T19:22:00Z  Requests  0.0
+2025-02-10T19:23:00Z  Requests  0.0
+2025-02-10T19:24:00Z  Requests  0.0
+2025-02-10T19:25:00Z  Requests  0.0
+2025-02-10T19:26:00Z  Requests  0.0
+2025-02-10T19:27:00Z  Requests  0.0
+2025-02-10T19:28:00Z  Requests  0.0
+2025-02-10T19:29:00Z  Requests  0.0
+2025-02-10T19:30:00Z  Requests  0.0
+2025-02-10T19:31:00Z  Requests  0.0
+2025-02-10T19:32:00Z  Requests  0.0
+2025-02-10T19:33:00Z  Requests  0.0
+2025-02-10T19:34:00Z  Requests  0.0
+2025-02-10T19:35:00Z  Requests  0.0
+2025-02-10T19:36:00Z  Requests  0.0
+2025-02-10T19:37:00Z  Requests  0.0
+2025-02-10T19:38:00Z  Requests  0.0
+2025-02-10T19:39:00Z  Requests  0.0
+2025-02-10T19:40:00Z  Requests  0.0
+2025-02-10T19:41:00Z  Requests  0.0
+2025-02-10T19:42:00Z  Requests  0.0
+2025-02-10T19:43:00Z  Requests  0.0
+2025-02-10T19:44:00Z  Requests  0.0
+2025-02-10T19:45:00Z  Requests  0.0
+2025-02-10T19:46:00Z  Requests  0.0
+2025-02-10T19:47:00Z  Requests  0.0
+2025-02-10T19:48:00Z  Requests  0.0
+2025-02-10T19:49:00Z  Requests  0.0
+2025-02-10T19:50:00Z  Requests  0.0
+2025-02-10T19:51:00Z  Requests  0.0
+2025-02-10T19:52:00Z  Requests  0.0
+2025-02-10T19:53:00Z  Requests  0.0
+2025-02-10T19:54:00Z  Requests  0.0
+2025-02-10T19:55:00Z  Requests  0.0
+2025-02-10T19:56:00Z  Requests  0.0
+2025-02-10T19:57:00Z  Requests  0.0
+2025-02-10T19:58:00Z  Requests  0.0
+2025-02-10T19:59:00Z  Requests  0.0
+2025-02-10T20:00:00Z  Requests  0.0
+2025-02-10T20:01:00Z  Requests  0.0
+2025-02-10T20:02:00Z  Requests  0.0
+2025-02-10T20:03:00Z  Requests  0.0
+2025-02-10T20:04:00Z  Requests  0.0
+2025-02-10T20:05:00Z  Requests  0.0
+2025-02-10T20:06:00Z  Requests  0.0
+2025-02-10T20:07:00Z  Requests  0.0
+2025-02-10T20:08:00Z  Requests  0.0
+2025-02-10T20:09:00Z  Requests  0.0
+2025-02-10T20:10:00Z  Requests  0.0
+2025-02-10T20:11:00Z  Requests  0.0
+2025-02-10T20:12:00Z  Requests  0.0
+2025-02-10T20:13:00Z  Requests  0.0
+2025-02-10T20:14:00Z  Requests  0.0
+2025-02-10T20:15:00Z  Requests  0.0
+2025-02-10T20:16:00Z  Requests  0.0
+2025-02-10T20:17:00Z  Requests  0.0
+2025-02-10T20:18:00Z  Requests  0.0
+2025-02-10T20:19:00Z  Requests  0.0
+2025-02-10T20:20:00Z  Requests  0.0
+2025-02-10T20:21:00Z  Requests  0.0
+2025-02-10T20:22:00Z  Requests  0.0
+2025-02-10T20:23:00Z  Requests  0.0
+2025-02-10T20:24:00Z  Requests  0.0
+2025-02-10T20:25:00Z  Requests  0.0
+2025-02-10T20:26:00Z  Requests  0.0
+2025-02-10T20:27:00Z  Requests  0.0
+2025-02-10T20:28:00Z  Requests  0.0
+2025-02-10T20:29:00Z  Requests  0.0
+2025-02-10T20:30:00Z  Requests  0.0
+2025-02-10T20:31:00Z  Requests  0.0
+2025-02-10T20:32:00Z  Requests  0.0
+2025-02-10T20:33:00Z  Requests  0.0
+2025-02-10T20:34:00Z  Requests  0.0
+2025-02-10T20:35:00Z  Requests  0.0
+2025-02-10T20:36:00Z  Requests  0.0
+2025-02-10T20:37:00Z  Requests  0.0
+2025-02-10T20:38:00Z  Requests  0.0
+2025-02-10T20:39:00Z  Requests  0.0
+2025-02-10T20:40:00Z  Requests  0.0
+2025-02-10T20:41:00Z  Requests  0.0
+2025-02-10T20:42:00Z  Requests  0.0
+2025-02-10T20:43:00Z  Requests  0.0
+2025-02-10T20:44:00Z  Requests  0.0
+2025-02-10T20:45:00Z  Requests  0.0
+2025-02-10T20:46:00Z  Requests  0.0
+2025-02-10T20:47:00Z  Requests  0.0
+2025-02-10T20:48:00Z  Requests  0.0
+2025-02-10T20:49:00Z  Requests  0.0
+2025-02-10T20:50:00Z  Requests  0.0
+2025-02-10T20:51:00Z  Requests  0.0
+2025-02-10T20:52:00Z  Requests  0.0
+2025-02-10T20:53:00Z  Requests  0.0
+2025-02-10T20:54:00Z  Requests  0.0
+2025-02-10T20:55:00Z  Requests  0.0
+2025-02-10T20:56:00Z  Requests  0.0
+2025-02-10T20:57:00Z  Requests  0.0
+2025-02-10T20:58:00Z  Requests  0.0
+2025-02-10T20:59:00Z  Requests  0.0
+2025-02-10T21:00:00Z  Requests  0.0
+2025-02-10T21:01:00Z  Requests  0.0
+2025-02-10T21:02:00Z  Requests  0.0
+2025-02-10T21:03:00Z  Requests  0.0
+2025-02-10T21:04:00Z  Requests  0.0
+2025-02-10T21:05:00Z  Requests  0.0
+2025-02-10T21:06:00Z  Requests  0.0
+2025-02-10T21:07:00Z  Requests  0.0
+2025-02-10T21:08:00Z  Requests  0.0
+2025-02-10T21:09:00Z  Requests  0.0
+2025-02-10T21:10:00Z  Requests  0.0
+2025-02-10T21:11:00Z  Requests  0.0
+2025-02-10T21:12:00Z  Requests  0.0
+2025-02-10T21:13:00Z  Requests  0.0
+2025-02-10T21:14:00Z  Requests  0.0
+2025-02-10T21:15:00Z  Requests  0.0
+2025-02-10T21:16:00Z  Requests  0.0
+2025-02-10T21:17:00Z  Requests  0.0
+2025-02-10T21:18:00Z  Requests  0.0
+2025-02-10T21:19:00Z  Requests  0.0
+2025-02-10T21:20:00Z  Requests  0.0
+2025-02-10T21:21:00Z  Requests  0.0
+2025-02-10T21:22:00Z  Requests  0.0
+2025-02-10T21:23:00Z  Requests  0.0
+2025-02-10T21:24:00Z  Requests  0.0
+2025-02-10T21:25:00Z  Requests  0.0
+2025-02-10T21:26:00Z  Requests  0.0
+2025-02-10T21:27:00Z  Requests  0.0
+2025-02-10T21:28:00Z  Requests  0.0
+2025-02-10T21:29:00Z  Requests  0.0
+2025-02-10T21:30:00Z  Requests  0.0
+2025-02-10T21:31:00Z  Requests  0.0
+2025-02-10T21:32:00Z  Requests  0.0
+2025-02-10T21:33:00Z  Requests  0.0
+2025-02-10T21:34:00Z  Requests  0.0
+2025-02-10T21:35:00Z  Requests  0.0
+2025-02-10T21:36:00Z  Requests  0.0
+2025-02-10T21:37:00Z  Requests  0.0
+2025-02-10T21:38:00Z  Requests  10.0
+2025-02-10T21:39:00Z  Requests  0.0
+2025-02-10T21:40:00Z  Requests  0.0
+2025-02-10T21:41:00Z  Requests  4.0
+2025-02-10T21:42:00Z  Requests  0.0
+2025-02-10T21:43:00Z  Requests  0.0
+2025-02-10T21:44:00Z  Requests  0.0
 ```
 > Reemplazar los valores: 1. ID de suscripcion de Azure, 2. ID de creaciòn de infra y 3. El rango de fechas de uso de la aplicación.
 
@@ -621,6 +862,7 @@ az monitor metrics list --resource "/subscriptions/XXXXXXXXXXXXXXX/resourceGroup
 ```Powershell
 az group export -n upt-arg-XXX > lab_01.json
 ```
+![image](https://github.com/user-attachments/assets/42e9cba0-2d26-4336-a738-83f1da7ed8c0)
 
 8. En el Visual Studio Code, instalar la extensión *ARM Template Viewer*, abrir el archivo lab_02.json y hacer click en el icono de previsualizar ARM.
 
@@ -628,7 +870,10 @@ az group export -n upt-arg-XXX > lab_01.json
 ## ACTIVIDADES ENCARGADAS
 
 1. Subir el diagrama al repositorio como lab_02.png y el reporte de metricas.
-2. Realizar el scanero del codigo de terraform utilizando TfSec o Trivy dentro del Github Action.
-3. En la aplicación completar el envio de correo para el registro de usuarios (https://learn.microsoft.com/es-es/aspnet/core/security/authentication/accconfirm?view=aspnetcore-9.0&tabs=visual-studio)
-4. En la aplicación migrar la cadena de conexion a la base de datos a una Configuración de aplicación de Azure, como una variable de ambiente.
-5. Realizar el escaneo de vulnerabilidad con SonarCloud y Semgrep dentro del Github Action correspondiente.
+![image](https://github.com/user-attachments/assets/2b676b32-d7f0-4f47-913c-e7a88ce5e3eb)
+![image](https://github.com/user-attachments/assets/b92e0db2-8c6c-4a53-80e1-d0fdd9ec872c)
+
+3. Realizar el scanero del codigo de terraform utilizando TfSec o Trivy dentro del Github Action.
+4. En la aplicación completar el envio de correo para el registro de usuarios (https://learn.microsoft.com/es-es/aspnet/core/security/authentication/accconfirm?view=aspnetcore-9.0&tabs=visual-studio)
+5. En la aplicación migrar la cadena de conexion a la base de datos a una Configuración de aplicación de Azure, como una variable de ambiente.
+6. Realizar el escaneo de vulnerabilidad con SonarCloud y Semgrep dentro del Github Action correspondiente.
